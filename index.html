@@ -7,14 +7,53 @@
     <link rel="stylesheet" href="style/style.css">
     <link href="https://fonts.googleapis.com/css2?family=SF+Pro:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        iframe {
-            display: none;
+        /* Centering the company name at the top */
+        .company-name-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px; /* Add space for the header */
+            margin-top: 20px;
+        }
+
+        .headline.company-name {
+            font-family: 'SF Pro', sans-serif;
+            font-size: 3rem; /* Make the company name bigger */
+            font-weight: 700;
+            color: #333; /* Dark color for text */
+            text-transform: uppercase; /* Uppercase for a more formal look */
+            letter-spacing: 2px; /* Space out the letters */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle text shadow for depth */
+            margin: 0; /* Remove default margin */
+            text-align: center; /* Center the text */
+        }
+
+        /* Keep the "We Are Coming Soon!" heading the same */
+        .headline {
+            font-family: 'SF Pro', sans-serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: #555;
+            text-align: center;
+        }
+
+        /* Responsive styling for smaller screens */
+        @media (max-width: 600px) {
+            .headline.company-name {
+                font-size: 2rem; /* Smaller size on mobile */
+                letter-spacing: 1px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="headline">Sanand Infotech </h1>
+        <!-- Centered Company Name at the top -->
+        <div class="company-name-container">
+            <h1 class="headline company-name">Sanand Infotech</h1>
+        </div>
+
+        <!-- Keeping the "We Are Coming Soon!" heading as is -->
         <h1 class="headline">We Are Coming Soon!</h1>
         <p class="subtext">We're working hard to bring you something incredible.</p>
         <div class="clock-date">
@@ -28,13 +67,24 @@
             </div>
         </div>
     </div>
-    
-    <!-- YouTube Audio Embed for Background Music -->
-    <iframe src="https://www.youtube.com/embed/JSN_AzI8Sbc?autoplay=1&mute=1&controls=0&loop=1&playlist=JSN_AzI8Sbc" 
-            frameborder="0" 
-            allow="autoplay; encrypted-media" 
-            allowfullscreen>
-    </iframe>
+
+    <!-- Audio Player to Autoplay MP3 -->
+    <audio id="backgroundAudio" autoplay loop>
+        <source src="Sanand.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var audio = document.getElementById('backgroundAudio');
+            if (audio) {
+                audio.volume = 1.0;
+                audio.play().catch(function(error) {
+                    console.log("Autoplay failed, try manual interaction.", error);
+                });
+            }
+        });
+    </script>
 
     <script src="scripts/script.js"></script>
 </body>
